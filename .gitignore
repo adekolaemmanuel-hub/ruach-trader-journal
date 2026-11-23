@@ -31,3 +31,10 @@ npm-debug.log*
 # Editor
 .vscode/
 .idea/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan

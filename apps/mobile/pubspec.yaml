@@ -1,0 +1,17 @@
+name: ruach_trader_journal
+description: RUACH Trader Journal - Flutter client
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_riverpod: ^2.3.6
+  http: ^0.14.0
+  flutter_secure_storage: ^8.0.0
+  in_app_purchase: ^4.0.0
+  flutter_dotenv: ^5.0.2

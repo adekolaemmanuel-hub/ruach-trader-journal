@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment / secrets — never commit real .env files
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+
+# Prisma
+services/api/prisma/migrations/dev.db
+
+# Flutter / mobile
+apps/mobile/.dart_tool/
+apps/mobile/.flutter-plugins
+apps/mobile/.flutter-plugins-dependencies
+apps/mobile/.packages
+apps/mobile/build/
+apps/mobile/*.iml
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/

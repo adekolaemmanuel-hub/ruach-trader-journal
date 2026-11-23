@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  passwordHash  String
+  displayName   String?
+  country       String?
+  timezone      String?  @default("Africa/Lagos")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  trades        Trade[]
+  subscriptions Subscription[]
+}
+
+model Trade {
+  id           String   @id @default(uuid())
+  user         User     @relation(fields: [userId], references: [id])
+  userId       String
+  pair         String
+  direction    String
+  entryPrice   Decimal
+  slPrice      Decimal?
+  tpPrice      Decimal?
+  positionSize Decimal?
+  profitLoss   Decimal?
+  rr           Decimal?
+  entryTs      DateTime?
+  exitTs       DateTime?
+  strategyTag  String?
+  notes        String?
+  importedFrom String?
+  rawPayload   Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Subscription {
+  id                     String   @id @default(uuid())
+  user                   User     @relation(fields: [userId], references: [id])
+  userId                 String
+  provider               String
+  providerSubscriptionId String?
+  planId                 Int?
+  status                 String
+  nextBillingAt          DateTime?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model Report {
+  id         String   @id @default(uuid())
+  userId     String
+  type       String
+  metrics    Json
+  reportUrl  String?
+  generatedAt DateTime @default(now())
+}
